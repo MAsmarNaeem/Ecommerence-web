@@ -1,0 +1,18 @@
+
+.name{
+    overflow: hidden;
+}
+
+.name img{
+    transform: all 1.5s ease;
+}
+
+.name img:hover{
+    transform: scale(11.5s);
+}
+/* .name img {
+    transform: scale(1.5);
+    transition: transform 1.55s;
+    transition-timing-function: ease;
+  } */
+  

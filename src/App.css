@@ -10,6 +10,35 @@
 .name img:hover{
     transform: scale(11.5s);
 }
+ h2{
+    font-family: 'Merriweather', serif;
+ }
+ p{
+    font-family: 'Merriweather', serif;
+ }
+ h3{
+    font-family: 'Heebo', sans-serif;
+font-family: 'Merriweather', serif;
+ }
+ h1{
+    font-family: 'Heebo', sans-serif;
+font-family: 'Merriweather', serif;
+ }
+ nav
+ {
+    font-family: 'Heebo', sans-serif;
+    font-family: 'Merriweather', serif;
+
+ }
+ .mybtn{
+    position: absolute;
+    bottom: 50px;
+    right: 90px;
+    padding: 10px;
+    
+ }
+ 
+
 /* .name img {
     transform: scale(1.5);
     transition: transform 1.55s;

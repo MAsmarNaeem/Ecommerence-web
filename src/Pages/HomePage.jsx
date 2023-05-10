@@ -24,7 +24,7 @@ function HomePage() {
         </div>
       </div>
       <hr className="container " />
-      <Navbar/>
+      <Navbar  />
       <div className="row text-center bg-dark text-white mx-3">
         <h2>Welcome to our Shopping Store</h2>
       </div>
@@ -85,7 +85,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="row container-fluid mt-5 justify-content-center   " >
+      <div className="row container-fluid mt-5 justify-content-center   ">
         {products.map((myproducts, index) => (
           <div className="col-md-3 text-center " key={myproducts.id}>
             <div className="card mt-5" style={{ height: "550px" }}>
@@ -107,7 +107,7 @@ function HomePage() {
                 <p> {myproducts.description}</p>
                 <p>Price {myproducts.price}</p>
                 <button
-                className="mybtn"
+                  className="mybtn"
                   type="button"
                   class="btn bg-info text-white "
                   data-toggle="button"
@@ -124,7 +124,7 @@ function HomePage() {
       <br />
       <br />
       <br />
-     <Footer/>
+      <Footer />
     </div>
   );
 }

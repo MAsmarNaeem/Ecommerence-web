@@ -5,13 +5,19 @@ import Login from "./Pages/Login";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import ProductList from "./Pages/ProductList";
-
+import Products from "./Pages/Products";
+import Productdetail from "./Pages/Productdetail";
 function App() {
   return (
     <>
+     
       <Routes>
+       
         <Route path="/" element={<HomePage />} />
         <Route path="/ProductList" element={<ProductList />} />
+        <Route path="/Products" element={<Products />} />
+        <Route path="/Productdetail/:paramid" element={<Productdetail />} />
+
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />

@@ -6,7 +6,7 @@ import {  Container } from "react-bootstrap";
 
 const footer = () => {
   return (
-    <div> <footer className="bg-light py-4">
+    <div> <footer className="bg-light py-4 mt-3">
     <Container>
       <Row>
         <Col md={4} className="mb-4">

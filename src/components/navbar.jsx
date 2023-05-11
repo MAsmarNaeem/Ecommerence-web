@@ -18,7 +18,7 @@ const navbar = (props) => {
         </Nav>
         <Nav>
   
-        <Nav.Link  ><Link className='text-decoration-none text-dark' ><Sidebar/></Link></Nav.Link>
+        <Nav.Link  ><Link className='text-decoration-none text-dark' ><Sidebar myids={props.ids}/></Link></Nav.Link>
            
           <Nav.Link><Link  className='text-decoration-none text-dark' to="/login">Login</Link></Nav.Link>
           <Nav.Link  ><Link  className='text-decoration-none text-dark' to="/signup">Signup</Link></Nav.Link>

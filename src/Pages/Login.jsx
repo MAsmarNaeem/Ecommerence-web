@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import UseLogin from '../customHooks/UseLogin';
 
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const {getdata,submitbutton}=UseLogin()
@@ -22,9 +23,10 @@ function Login() {
               <Form.Control type="password" placeholder="Password" required  onChange={getdata} name="password"/>
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100 mt-3" onClick={submitbutton}>
+            <Button variant="primary" type="submit" className="w-100 mt-3" onClick={submitbutton} >
               Log In
             </Button>
+            <p className="mt-4"><h3>For our New Customers  <span><NavLink to="/signup">SignUp</NavLink></span></h3> </p>
           </Form>
         </Col>
       </Row>

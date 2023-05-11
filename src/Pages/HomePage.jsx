@@ -2,19 +2,37 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { BsCart } from "react-icons/bs";
 import "../App.css";
 import Navbar from "../components/navbar";
-
 import products from "../Products/Products.json";
 import pic1 from "../../src/Pages/images/pic1.avif";
 import pic2 from "../../src/Pages/images/pic2.jpg";
 import pic3 from "../../src/Pages/images/pic3.avif";
 import React from "react";
-
 import Footer from "../components/footer";
+import { useState } from "react";
 
 function HomePage() {
+  const [addcart, setaddcart] = useState([]);
+
+
+ 
+  React.useEffect(() => {
+    const storedCart = localStorage.getItem("idkey");
+    if (storedCart) {
+      setaddcart(JSON.parse(storedCart));
+    }
+  }, []);
+
+  const addCartItem = (id) => {
+    alert("add item into cart successfully")
+    setaddcart((prevCart) => {
+      const updatedCart = [...prevCart, id];
+      localStorage.setItem("idkey", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
   return (
     <div className="container-fluid">
-      <div className="container-fluid row mt-3 justify-content-between">
+      <div className="row mt-3 justify-content-between">
         <div className="col-md-3">
           <h1>Ecommerce</h1>
         </div>
@@ -23,96 +41,99 @@ function HomePage() {
           <BsCart size="40px" />
         </div>
       </div>
-      <hr className="container " />
-      <Navbar  />
-      <div className="row text-center bg-dark text-white mx-3">
-        <h2>Welcome to our Shopping Store</h2>
+      <hr className="container" />
+      <Navbar />
+      <div className="row text-center bg-dark text-white mx-3 py-3">
+        <div className="col">
+          <h2>Welcome to our Shopping Store</h2>
+        </div>
       </div>
-      <div className="row text-center  text-success mx-3 mt-5">
-        <h2>Our Items </h2>
+      <div className="row text-center text-success mx-3 mt-5">
+        <div className="col">
+          <h2>Our Items</h2>
+        </div>
       </div>
       {/* slider */}
-      <div>
+      <div className="row">
         <div
           id="carouselExampleIndicators"
-          class="carousel slide"
+          className="carousel slide"
           data-ride="carousel"
         >
-          <ol class="carousel-indicators">
+          <ol className="carousel-indicators">
             <li
               data-target="#carouselExampleIndicators"
               data-slide-to="0"
-              class="active"
+              className="active"
             ></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
               <img
-                class="d-block w-100"
+                className="d-block w-100"
                 src={pic1}
                 height="400px"
-                width="auto"
                 alt="First slide"
               />
             </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src={pic2} alt="Second slide" />
+            <div className="carousel-item">
+              <img className="d-block w-100" src={pic2} alt="Second slide" />
             </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src={pic3} alt="Third slide" />
+            <div className="carousel-item">
+              <img className="d-block w-100" src={pic3} alt="Third slide" />
             </div>
           </div>
           <a
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             href="#carouselExampleIndicators"
             role="button"
             data-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Previous</span>
           </a>
           <a
-            class="carousel-control-next"
+            className="carousel-control-next"
             href="#carouselExampleIndicators"
             role="button"
             data-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="sr-only">Next</span>
           </a>
         </div>
       </div>
-
-      <div className="row container-fluid mt-5 justify-content-center   ">
+      <div className="row container-fluid mt-5 justify-content-center">
         {products.map((myproducts, index) => (
-          <div className="col-md-3 text-center " key={myproducts.id}>
+          <div className="col-md-3 text-center" key={myproducts.id}>
             <div className="card mt-5" style={{ height: "550px" }}>
               <div className="name">
                 <img
                   src={myproducts.thumbnail}
                   style={{ height: "200px", width: "300px" }}
-                  alt="${item.title}"
+                  alt={myproducts.title}
                 />
               </div>
 
               <div className="card-content">
-                <h3
-                  className="text-danger mx-4"
-                  style={{ height: "100px", width: "200px" }}
-                >
-                  {myproducts.title}
-                </h3>
-                <p> {myproducts.description}</p>
-                <p>Price {myproducts.price}</p>
+                <h3 className="text-danger my-4">{myproducts.title}</h3>
+                <p>{myproducts.description}</p>
+                <p>Price: {myproducts.price}</p>
                 <button
-                  className="mybtn"
+                  className="mybtn btn bg-info text-white"
                   type="button"
-                  class="btn bg-info text-white "
                   data-toggle="button"
                   aria-pressed="false"
-                  autocomplete="off"
+                  autoComplete="off"
+                  onClick={() => addCartItem(myproducts.id)}
                 >
                   Add to Cart
                 </button>

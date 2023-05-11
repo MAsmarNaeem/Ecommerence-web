@@ -1,0 +1,43 @@
+.sidebar-offcanvas {
+    background-color: #f8f9fa !important /* Set the background color of the offcanvas */
+  }
+ 
+  .cart-items {
+    list-style-type: none !important;
+    padding: 0;
+  }
+  
+  .cart-item {
+    display: flex   !important;
+    align-items: center  !important;
+    margin-bottom: 1rem   !important;
+  }
+  
+  .product-details {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .product-image {
+    margin-right: 1rem !important;
+  }
+  
+  .product-info {
+    flex-grow: 1 !important;
+  }
+  
+  .btn-success {
+    background-color: #28a745 !important;
+    color: #fff !important;
+    border-color: #28a745 !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 14px !important;
+    margin-top: 1rem !important;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+  }
+  

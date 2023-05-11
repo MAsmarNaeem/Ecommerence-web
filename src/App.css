@@ -46,4 +46,46 @@ font-family: 'Merriweather', serif;
     transition: transform 1.55s;
     transition-timing-function: ease;
   } */
-  
+  .sidebar-offcanvas {
+   background-color: #f8f9fa; /* Set the background color of the offcanvas */
+ }
+ 
+ .cart-items {
+   list-style-type: none;
+   padding: 0;
+ }
+ 
+ .cart-item {
+   display: flex;
+   align-items: center;
+   margin-bottom: 1rem;
+ }
+ 
+ .product-details {
+   display: flex;
+   align-items: center;
+   width: 100%;
+ }
+ 
+ .product-image {
+   margin-right: 1rem;
+ }
+ 
+ .product-info {
+   flex-grow: 1;
+ }
+ 
+ .btn-success {
+   background-color: #28a745;
+   color: #fff;
+   border-color: #28a745;
+   padding: 0.5rem 1rem;
+   font-size: 14px;
+   margin-top: 1rem;
+ }
+ 
+ .btn-success:hover {
+   background-color: #218838;
+   border-color: #1e7e34;
+ }
+ 

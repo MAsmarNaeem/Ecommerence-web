@@ -6,23 +6,31 @@ import Footer from "../components/footer";
 
 const Productdetail = () => {
   const { paramid } = useParams();
-  const [addcart,setaddcart]=useState([])
-
-  const addCartItem=(id)=>
-  {
-     setaddcart((id)=>
-     {
-        return([...addcart,id])
-
-     })
+  const [addcart, setaddcart] = useState([]);
 
 
-  }
-  console.log(addcart);
+ 
+  React.useEffect(() => {
+    const storedCart = localStorage.getItem("idkey");
+    if (storedCart) {
+      setaddcart(JSON.parse(storedCart));
+    }
+  }, []);
+
+  const addCartItem = (id) => {
+    alert("add item into cart successfully")
+    setaddcart((prevCart) => {
+      const updatedCart = [...prevCart, id];
+      localStorage.setItem("idkey", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
+
+
 
   return (
     <div>
-      <Navbar />
+      <Navbar ids={addcart} />
       <div className="container row justify-content-evenly mt-4">
         <div className="col-md-5">
           <div className="card">
@@ -73,7 +81,7 @@ const Productdetail = () => {
                           data-toggle="button"
                           aria-pressed="false"
                           autocomplete="off"
-                          onClick={()=>addCartItem(product.id)}
+                          onClick={() => addCartItem(product.id)}
                         >
                           Add to Cart
                         </button>
@@ -85,7 +93,6 @@ const Productdetail = () => {
             })}
           </div>
         </div>
-      
       </div>
       <Footer />
     </div>

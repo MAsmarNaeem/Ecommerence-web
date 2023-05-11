@@ -15,7 +15,7 @@ function Sidebar(props) {
     if (storedCart) {
       setCartItems(JSON.parse(storedCart));
     }
-  }, []);
+  }, [cartItems]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

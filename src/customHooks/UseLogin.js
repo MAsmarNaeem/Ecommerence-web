@@ -9,7 +9,7 @@ function UseLogin() {
   });
   const navigate = useNavigate();
 
-  const [storeddata, setstoreddata] = useState([]);
+ 
 
   const getdata = (e) => {
     const { value, name } = e.target;

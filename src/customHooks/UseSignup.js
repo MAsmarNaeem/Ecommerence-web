@@ -10,10 +10,10 @@ function UseSignup() {
     confirmPassword: "",
   });
   const dompush=useNavigate()
-  const[data,setdata]=useState([])
-  console.log("data is :",data);
+  const[userData,setUserData]=useState([])
 
-  const getdata = (e) => {
+
+  const getUserData = (e) => {
     const { value, name } = e.target;
 
     setSignupInputs(() => {
@@ -46,7 +46,7 @@ function UseSignup() {
       alert("Enter Password strong or greater than 5 digits ");
     } else {
       alert("Enter data successfully");
-      localStorage.setItem("key",JSON.stringify([...data,signupInputs]))
+      localStorage.setItem("key",JSON.stringify([...userData,signupInputs]))
       dompush("/Login")
      
 
@@ -54,7 +54,7 @@ function UseSignup() {
   };
 
   return {
-    getdata,
+    getUserData,
     signupInputs,
     setSignupInputs,
     addDataButton,

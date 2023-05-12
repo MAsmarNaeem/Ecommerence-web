@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import Login from "./Login";
 
 function Signup() {
-  const { getdata, signupInputs,addDataButton } = UseSignup();
+  const { getUserData, signupInputs,addDataButton } = UseSignup();
   return (
     <Container>
       <Row className="justify-content-center">
@@ -19,7 +19,7 @@ function Signup() {
                 placeholder="Enter your name"
                 name="name"
                 required
-                onChange={getdata}
+                onChange={ getUserData}
               />
             </Form.Group>
 
@@ -30,7 +30,7 @@ function Signup() {
                 placeholder="Enter email"
                 name="email"
                 required
-                onChange={getdata}
+                onChange={ getUserData}
               />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
@@ -44,7 +44,7 @@ function Signup() {
                 placeholder="Password"
                 name="password"
                 required
-                onChange={getdata}
+                onChange={ getUserData}
               />
             </Form.Group>
 
@@ -53,7 +53,7 @@ function Signup() {
               <Form.Control
                 type="password"
                 placeholder="Confirm Password"
-                onChange={getdata}
+                onChange={ getUserData}
                 name="confirmPassword"
 
                 required

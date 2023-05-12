@@ -3,11 +3,14 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseSignup from "../customHooks/UseSignup";
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
+import Navbar from "../components/navbar";
 
 function Signup() {
   const { getUserData, signupInputs,addDataButton } = UseSignup();
   return (
-    <Container>
+   <div>
+    <Navbar/>
+     <Container>
       <Row className="justify-content-center">
         <Col md={6} className="mt-4">
           <h2 className="text-center mb-4">Create an Account</h2>
@@ -70,6 +73,7 @@ function Signup() {
         </Col>
       </Row>
     </Container>
+   </div>
   );
 }
 

@@ -9,6 +9,9 @@ import pic3 from "../../src/Pages/images/pic3.avif";
 import React from "react";
 import Footer from "../components/footer";
 import { useState } from "react";
+ import Sidebar from "../components/Sidebar";
+
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [addcart, setaddcart] = useState([]);
@@ -37,9 +40,10 @@ function HomePage() {
           <h1>Ecommerce</h1>
         </div>
         <div className="col-md-3 text-end">
-          <AiOutlineUserAdd size="40px" />
-          <BsCart size="40px" />
-        </div>
+       <Link to="/signup">   <AiOutlineUserAdd size="40px" /></Link>
+           
+          <Link to="/Products">  <BsCart size="40px"  />  </Link>
+         </div>
       </div>
       <hr className="container" />
       <Navbar />

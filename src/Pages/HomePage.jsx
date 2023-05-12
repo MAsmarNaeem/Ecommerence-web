@@ -9,15 +9,15 @@ import pic3 from "../../src/Pages/images/pic3.avif";
 import React from "react";
 import Footer from "../components/footer";
 import { useState } from "react";
- import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/Sidebar";
+import Carousel from "react-bootstrap/Carousel";
+import { NavLink } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
 function HomePage() {
   const [addcart, setaddcart] = useState([]);
 
-
- 
   React.useEffect(() => {
     const storedCart = localStorage.getItem("idkey");
     if (storedCart) {
@@ -26,7 +26,7 @@ function HomePage() {
   }, []);
 
   const addCartItem = (id) => {
-    alert("add item into cart successfully")
+    alert("Item added Successfully");
     setaddcart((prevCart) => {
       const updatedCart = [...prevCart, id];
       localStorage.setItem("idkey", JSON.stringify(updatedCart));
@@ -35,87 +35,79 @@ function HomePage() {
   };
   return (
     <div className="container-fluid">
-      <div className="row mt-3 justify-content-between">
+      {/* <div className="row mt-3 justify-content-between">
         <div className="col-md-3">
           <h1>Ecommerce</h1>
         </div>
         <div className="col-md-3 text-end">
-       <Link to="/signup">   <AiOutlineUserAdd size="40px" /></Link>
-           
-          <Link to="/Products">  <BsCart size="40px"  />  </Link>
-         </div>
-      </div>
-      <hr className="container" />
-      <Navbar />
-      <div className="row text-center bg-dark text-white mx-3 py-3">
+          <Link to="/signup">
+            {" "}
+            <AiOutlineUserAdd size="40px" />
+          </Link>
+
+          <Link to="/Products">
+            {" "}
+            <BsCart size="40px" />{" "}
+          </Link>
+        </div>
+      </div> */}
+      {/* <hr className="container" /> */}
+      <Navbar color="bg-info "/>
+      {/* <div className="row text-center bg-dark text-white mx-3 py-3">
         <div className="col">
           <h2>Welcome to our Shopping Store</h2>
         </div>
-      </div>
-      <div className="row text-center text-success mx-3 mt-5">
-        <div className="col">
-          <h2>Our Items</h2>
-        </div>
-      </div>
+      </div> */}
+
       {/* slider */}
-      <div className="row">
-        <div
-          id="carouselExampleIndicators"
-          className="carousel slide"
-          data-ride="carousel"
-        >
-          <ol className="carousel-indicators">
-            <li
-              data-target="#carouselExampleIndicators"
-              data-slide-to="0"
-              className="active"
-            ></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                className="d-block w-100"
-                src={pic1}
-                height="400px"
-                alt="First slide"
-              />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100" src={pic2} alt="Second slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100" src={pic3} alt="Third slide" />
-            </div>
-          </div>
-          <a
-            className="carousel-control-prev"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a
-            className="carousel-control-next"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="sr-only">Next</span>
-          </a>
-        </div>
+      <div className="row pt-3 ">
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={pic1}
+              alt="First slide"
+              height={400}
+              width={100}
+            />
+            <Carousel.Caption>
+              <h3>Welcome to our Store</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={pic2}
+              alt="Second slide"
+              height={400}
+              width={100}
+            />
+
+            <Carousel.Caption>
+              <h3 className="text-info">Best Services Available</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={pic3}
+              alt="Third slide"
+              height={400}
+              width={100}
+            />
+
+            <Carousel.Caption>
+              <h3>Quality Products</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
       </div>
-      <div className="row container-fluid mt-5 justify-content-center">
+      <div className="row mt-5 ">
         {products.map((myproducts, index) => (
           <div className="col-md-3 text-center" key={myproducts.id}>
             <div className="card mt-5" style={{ height: "550px" }}>
@@ -127,9 +119,15 @@ function HomePage() {
                 />
               </div>
 
-              <div className="card-content">
-                <h3 className="text-danger my-4">{myproducts.title}</h3>
-                <p>{myproducts.description}</p>
+              <div className="card-content ">
+              <NavLink
+                    to={`/Productdetail/${myproducts.id}`}
+                    className="text-decoration-none text-danger"
+                  >
+                     <h3 className="text-danger my-4 text-right">{myproducts.title}</h3>
+                  </NavLink>
+               
+                <p className="container">{myproducts.description}</p>
                 <p>Price: {myproducts.price}</p>
                 <button
                   className="mybtn btn bg-info text-white"

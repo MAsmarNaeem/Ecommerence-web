@@ -17,11 +17,11 @@ const Products = () => {
   return (
     <div className="container-fluid">
       <Navbar />
-      <div className="row text-center text-success mx-3 mt-5">
+      <div className="row text-center text-danger mx-3 mt-5">
         <h2>OUR PRODUCTS </h2>
       </div>
 
-      <div className="row container-fluid mt-5 justify-content-center">
+      <div className="row container-fluid mt-5 ">
         {products.map((myproducts, index) => (
           <div className="col-md-3 text-center" key={myproducts.id}>
             <div className="card mt-5" style={{ height: "550px" }}>
@@ -34,27 +34,30 @@ const Products = () => {
               </div>
 
               <div className="card-content">
-                <h3
-                  className="text-danger mx-4"
+              <NavLink
+                    to={`/Productdetail/${myproducts.id}`}
+                    className="text-decoration-none text-danger"
+                  >
+                     <h3
+                  className="text-danger mx-4 mt-2"
                   style={{ height: "100px", width: "200px" }}
                 >
                   {myproducts.title}
                 </h3>
-                <p>{myproducts.description}</p>
-                <p>Price {myproducts.price}</p>
-                <button
-                  className="mybtn"
-                  type="button"
-                  // onClick={() => handleShowDetails(myproducts.id)}
-                >
-                  {/* <NavLink to="/Productdetail">Show Details...</NavLink> */}
-                  <NavLink
-                    to={`/Productdetail/${myproducts.id}`}
-                    className="text-decoration-none text-danger"
-                  >
-                    Show Details...
                   </NavLink>
-                </button>
+               
+              <p className="container">{myproducts.description}</p>
+                <p>Price {myproducts.price}</p>
+               
+              
+              
+                 <NavLink
+                    to={`/Productdetail/${myproducts.id}`}
+                    className="text-decoration-none text-white mybtn btn bg-info "
+                  >
+                    Show Details
+                  </NavLink>
+               
               </div>
             </div>
           </div>

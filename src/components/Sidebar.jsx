@@ -21,13 +21,13 @@ function Sidebar(props) {
 
   return (
     <>
-      <h6 className="mt-1 sidebar-title" onClick={handleShow}>
+      <h6 className="mt-1 sidebar-title text-white" onClick={handleShow}>
         Cart
       </h6>
 
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas show={show} onHide={handleClose} >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Cart</Offcanvas.Title>
+          <Offcanvas.Title >Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           {cartItems.length > 0 ? (
@@ -42,7 +42,7 @@ function Sidebar(props) {
                       <div className="product-image">
                         <img src={product.thumbnail} alt="" />
                       </div>
-                      <div className="product-details">
+                      {/* <div className="product-details">
                         <h5>{product.title}</h5> 
                        
                         <Button
@@ -56,7 +56,36 @@ function Sidebar(props) {
                             Add to Checkout
                           </NavLink>
                         </Button>
-                      </div>
+                      </div> */}
+                       <div className="card-body justify-content center container">
+                      <h2 className="card-title text-center pt-2  text-info">{product.title}</h2>
+                      <p className="card-text">{product.description}</p>
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item">
+                          Price: ${product.price}
+                        </li>
+                        <li className="list-group-item">
+                          Discount: {product.discountPercentage}%
+                        </li>
+                       
+                        <li className="list-group-item">
+                          Brand: {product.brand}
+                        </li>
+                        
+                        <Button
+                          variant="info"
+                          className=" checkout-button "
+                        >
+                          <NavLink
+                            to={`/CheckoutPage/${product.id}`}
+                            className="text-decoration-none text-white"
+                          >
+                            Go to Checkout
+                          </NavLink>
+                        </Button>
+                        
+                      </ul>
+                    </div>
                     </div>
                   );
                 } else {

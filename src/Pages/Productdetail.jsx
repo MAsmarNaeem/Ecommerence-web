@@ -18,7 +18,7 @@ const Productdetail = () => {
   }, []);
 
   const addCartItem = (id) => {
-    alert("add item into cart successfully")
+    alert("Item Added Successfully")
     setaddcart((prevCart) => {
       const updatedCart = [...prevCart, id];
       localStorage.setItem("idkey", JSON.stringify(updatedCart));
@@ -31,7 +31,7 @@ const Productdetail = () => {
   return (
     <div>
       <Navbar ids={addcart} />
-      <div className="container row justify-content-evenly mt-4">
+      <div className="row justify-content-evenly mt-4 mt-5 mb-5">
         <div className="col-md-5">
           <div className="card">
             {products.map((product) => {

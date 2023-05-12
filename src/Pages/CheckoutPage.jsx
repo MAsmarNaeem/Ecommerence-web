@@ -43,8 +43,8 @@ const CheckoutPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="mt-4 container row mx-3">
-        <div className="col-md-8">
+      <div className="mt-4  row mx-3 justify-content-evenly">
+        <div className="col-md-7">
           <p>Contact information</p>
           <p className="mt-4">
             Already have a account{" "}
@@ -132,7 +132,7 @@ const CheckoutPage = () => {
           </form>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="card">
             {products.map((product) => {
               if (product.id == paramitemid) {

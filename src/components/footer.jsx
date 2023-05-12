@@ -6,10 +6,10 @@ import {  Container } from "react-bootstrap";
 
 const footer = () => {
   return (
-    <div> <footer className="bg-light py-4 mt-3">
+    <div> <footer className="bg-info text-white  mt-3"  style={{ position: 'relative', bottom: 0, left: 0, right: 0 }}>
     <Container>
       <Row>
-        <Col md={4} className="mb-4">
+        <Col md={4} className="mb-4 pt-3">
           <h5>About Us</h5>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -18,7 +18,7 @@ const footer = () => {
             nisi ut aliquip ex ea commodo consequat.
           </p>
         </Col>
-        <Col md={4} className="mb-4">
+        <Col md={4} className="mb-4 pt-3">
           <h5>Customer Service</h5>
           <ul className="list-unstyled">
             <li>
@@ -32,21 +32,21 @@ const footer = () => {
             </li>
           </ul>
         </Col>
-        <Col md={4} className="mb-4">
+        <Col md={4} className="mb-4 pt-3">
           <h5>Follow Us</h5>
-          <ul className="list-unstyled">
+          <ul className="list-unstyled text-white">
             <li>
-              <a href="https://www.facebook.com">
+              <a  className='text-white' href="https://www.facebook.com">
                 <FaFacebook /> Facebook
               </a>
             </li>
             <li>
-              <a href="https://www.twitter.com">
+              <a  className='text-white' href="https://www.twitter.com">
                 <FaTwitter /> Twitter
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com">
+              <a  className='text-white' href="https://www.instagram.com">
                 <FaInstagram /> Instagram
               </a>
             </li>

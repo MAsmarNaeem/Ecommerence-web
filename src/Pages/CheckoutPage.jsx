@@ -121,7 +121,7 @@ const CheckoutPage = () => {
             </div>
             <button
               type="submit"
-              class="btn btn-dark text-white"
+              class="btn btn-info text-white"
               onClick={clickShippingButton}
             >
               Continue to Shipping

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Login from "../Pages/Login";
+
 
 function UseSignup() {
   const [signupInputs, setSignupInputs] = useState({
@@ -30,15 +30,15 @@ function UseSignup() {
     const { name, email, password, confirmPassword } = signupInputs;
    
 
-    if (name == "") {
+    if (name === "") {
       alert("name field is required");
-    } else if (email == "") {
+    } else if (email === "") {
       alert("email field is required");
-    } else if (password == "") {
+    } else if (password === "") {
       alert("password field is required");
-    } else if (confirmPassword == "") {
+    } else if (confirmPassword === "") {
       alert("confirm Password field is required");
-    } else if (password != confirmPassword) {
+    } else if (password !== confirmPassword) {
       alert("Password and confirm Password should be same");
     } else if (!email.includes("@")) {
       alert(" Enter valid Email");

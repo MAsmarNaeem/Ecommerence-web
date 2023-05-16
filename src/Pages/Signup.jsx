@@ -2,11 +2,11 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import UseSignup from "../customHooks/UseSignup";
 import { NavLink } from "react-router-dom";
-import Login from "./Login";
+// import Login from "./Login";
 import Navbar from "../components/navbar";
 
 function Signup() {
-  const { getUserData, signupInputs,addDataButton } = UseSignup();
+  const { getUserData, addDataButton } = UseSignup();
   return (
    <div>
     <Navbar/>

@@ -131,7 +131,7 @@ function HomePage() {
               <div className="name">
                 <img
                   src={myproducts.thumbnail}
-                  style={{ height: "200px", width: "300px" }}
+                 // style={{ height: "200px", width: "300px" }}
                   alt={myproducts.title}
                   class="img-fluid"
                 />

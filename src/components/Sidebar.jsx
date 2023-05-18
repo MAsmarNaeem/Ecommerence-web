@@ -8,14 +8,14 @@ import "./Sidebar.css";
 function Sidebar(props) {
   const [show, setShow] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-  const [itemCounts, setItemCounts] = useState({}); // State for storing item counts
+  const [itemCounts, setItemCounts] = useState({});
 
   useEffect(() => {
     const storedCart = localStorage.getItem("idkey");
     if (storedCart) {
       setCartItems(JSON.parse(storedCart));
     }
-  }, []);
+  }, [cartItems]);
 
   useEffect(() => {
     const countItems = () => {
@@ -33,6 +33,9 @@ function Sidebar(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const filteredItems = [...new Set(cartItems)]; 
+  console.log("filterd:",filteredItems);
+
   return (
     <>
       <h6 className="mt-1 sidebar-title text-white" onClick={handleShow}>
@@ -44,9 +47,9 @@ function Sidebar(props) {
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {cartItems.length > 0 ? (
+          {filteredItems.length > 0 ? (
             <div className="product-list">
-              {cartItems.map((itemId) => {
+              {filteredItems.map((itemId) => {
                 const product = products.find(
                   (product) => product.id === itemId
                 );
@@ -71,11 +74,9 @@ function Sidebar(props) {
                           <li className="list-group-item">
                             Discount: {product.discountPercentage}%
                           </li>
-
                           <li className="list-group-item">
                             Brand: {product.brand}
                           </li>
-
                           <Button variant="info" className=" checkout-button ">
                             <NavLink
                               to={`/CheckoutPage/${product.id}`}

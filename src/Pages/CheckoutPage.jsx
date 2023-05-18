@@ -135,7 +135,7 @@ const CheckoutPage = () => {
         <div className="col-md-3">
           <div className="card">
             {products.map((product) => {
-              if (product.id === paramitemid) {
+              if (product.id == paramitemid) {
                 return (
                   <div key={product.id}>
                     <img

@@ -1,6 +1,6 @@
 import React from "react";
-// import { AiOutlineUserAdd } from "react-icons/ai";
-// import { BsCart } from "react-icons/bs";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { BsCart } from "react-icons/bs";
 
 import "../App.css";
 import Navbar from "../components/navbar";

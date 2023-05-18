@@ -98,7 +98,7 @@ function HomePage() {
               alt="Second slide"
               height={400}
               width={100}
-              class="img-fluid"
+             // class="img-fluid"
             />
              
             <Carousel.Caption>

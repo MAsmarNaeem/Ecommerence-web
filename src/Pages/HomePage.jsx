@@ -1,5 +1,5 @@
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BsCart } from "react-icons/bs";
+// import { AiOutlineUserAdd } from "react-icons/ai";
+// import { BsCart } from "react-icons/bs";
 import "../App.css";
 import Navbar from "../components/navbar";
 import products from "../Products/Products.json";
@@ -9,11 +9,11 @@ import pic3 from "../../src/Pages/images/pic3.avif";
 import React from "react";
 import Footer from "../components/footer";
 import { useState } from "react";
-import Sidebar from "../components/Sidebar";
+// import Sidebar from "../components/Sidebar";
 import Carousel from "react-bootstrap/Carousel";
 import { NavLink } from "react-router-dom";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function HomePage() {
   const [addcart, setaddcart] = useState([]);

@@ -33,24 +33,22 @@ function HomePage() {
       return updatedCart;
     });
   };
-// const addCartItem = (productId) => {
-//   if (!addcart.includes(productId)) {
-//     setaddcart((prevCart) => {
-//       const updatedCart = [...prevCart, productId];
-//       localStorage.setItem("idkey", JSON.stringify(updatedCart));
-//       return updatedCart;
-//     });
-//     alert("Item added successfully");
-//    } 
-//    //else {
-//   //   alert("Item already exists in the cart");
-//   // }
-// };
+  // const addCartItem = (productId) => {
+  //   if (!addcart.includes(productId)) {
+  //     setaddcart((prevCart) => {
+  //       const updatedCart = [...prevCart, productId];
+  //       localStorage.setItem("idkey", JSON.stringify(updatedCart));
+  //       return updatedCart;
+  //     });
+  //     alert("Item added successfully");
+  //    }
+  //    //else {
+  //   //   alert("Item already exists in the cart");
+  //   // }
+  // };
 
-  
-  
   return (
-    <div className="container-fluid">
+    <div className="">
       {/* <div className="row mt-3 justify-content-between">
         <div className="col-md-3">
           <h1>Ecommerce</h1>
@@ -68,7 +66,7 @@ function HomePage() {
         </div>
       </div> */}
       {/* <hr className="container" /> */}
-      <Navbar color="bg-info "/>
+      <Navbar color="bg-info " />
       {/* <div className="row text-center bg-dark text-white mx-3 py-3">
         <div className="col">
           <h2>Welcome to our Shopping Store</h2>
@@ -98,9 +96,9 @@ function HomePage() {
               alt="Second slide"
               height={400}
               width={100}
-             // class="img-fluid"
+              // class="img-fluid"
             />
-             
+
             <Carousel.Caption>
               <h3 className="text-info">Best Services Available</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -124,27 +122,34 @@ function HomePage() {
           </Carousel.Item>
         </Carousel>
       </div>
-      <div className="row mt-5 ">
+      <div className="bg-info">
+        {" "}
+       <h3  className="mt-3 text-center text-white">Products</h3>
+      </div>
+
+      <div className="row mt-1 ">
         {products.map((myproducts, index) => (
           <div className="col-md-3 text-center" key={myproducts.id}>
             <div className="card mt-5" style={{ height: "550px" }}>
               <div className="name">
                 <img
                   src={myproducts.thumbnail}
-                 // style={{ height: "200px", width: "300px" }}
+                  // style={{ height: "200px", width: "300px" }}
                   alt={myproducts.title}
                   class="img-fluid"
                 />
               </div>
 
               <div className="card-content ">
-              <NavLink
-                    to={`/Productdetail/${myproducts.id}`}
-                    className="text-decoration-none text-danger"
-                  >
-                     <h3 className="text-danger my-4 text-right">{myproducts.title}</h3>
-                  </NavLink>
-               
+                <NavLink
+                  to={`/Productdetail/${myproducts.id}`}
+                  className="text-decoration-none text-danger"
+                >
+                  <h3 className="text-danger my-4 text-right">
+                    {myproducts.title}
+                  </h3>
+                </NavLink>
+
                 <p className="container">{myproducts.description}</p>
                 <p>Price: {myproducts.price}</p>
                 <button

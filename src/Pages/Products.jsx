@@ -1,6 +1,6 @@
 import React from "react";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BsCart } from "react-icons/bs";
+// import { AiOutlineUserAdd } from "react-icons/ai";
+// import { BsCart } from "react-icons/bs";
 
 import "../App.css";
 import Navbar from "../components/navbar";
@@ -15,13 +15,13 @@ const Products = () => {
   // };
 
   return (
-    <div className="container-fluid">
+    <div className="">
       <Navbar />
       <div className="row text-center text-danger mx-3 mt-5">
         <h2>OUR PRODUCTS </h2>
       </div>
 
-      <div className="row container-fluid mt-5 ">
+      <div className="row  mt-5 ">
         {products.map((myproducts, index) => (
           <div className="col-md-3 text-center" key={myproducts.id}>
             <div className="card mt-5" style={{ height: "550px" }}>

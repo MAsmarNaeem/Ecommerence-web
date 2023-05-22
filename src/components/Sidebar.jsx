@@ -15,7 +15,7 @@ function Sidebar(props) {
     if (storedCart) {
       setCartItems(JSON.parse(storedCart));
     }
-  }, [cartItems]);
+  }, []);
 
   useEffect(() => {
     const countItems = () => {
@@ -30,11 +30,23 @@ function Sidebar(props) {
     countItems();
   }, [cartItems]);
 
+  const addItemCounter = (itemId) => {
+    setItemCounts((prevCounts) => ({
+      ...prevCounts,
+      [itemId]: (prevCounts[itemId] || 0) + 1,
+    }));
+  };
+  const delItemCounter = (itemId) => {
+    setItemCounts((prevCounts) => ({
+      ...prevCounts,
+      [itemId]: (prevCounts[itemId] || 0) - 1,
+    }));
+  };
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const filteredItems = [...new Set(cartItems)]; 
-  console.log("filterd:",filteredItems);
+  const filteredItems = [...new Set(cartItems)];
 
   return (
     <>
@@ -42,7 +54,7 @@ function Sidebar(props) {
         Cart
       </h6>
 
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas placement="end" show={show} onHide={handleClose} backdrop={false}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
@@ -50,9 +62,7 @@ function Sidebar(props) {
           {filteredItems.length > 0 ? (
             <div className="product-list">
               {filteredItems.map((itemId) => {
-                const product = products.find(
-                  (product) => product.id === itemId
-                );
+                const product = products.find((product) => product.id === itemId);
 
                 if (product) {
                   return (
@@ -62,22 +72,35 @@ function Sidebar(props) {
                       </div>
 
                       <div className="card-body justify-content center container">
-                        <h2 className="card-title text-center pt-2  text-info">
-                          {product.title}({itemCounts[itemId]})
-                        </h2>
-
-                        <p className="card-text">{product.description}</p>
+                        <NavLink
+                          to={`/Productdetail/${product.id}`}
+                          className="text-decoration-none text-danger"
+                        >
+                          <h2 className="card-title text-center pt-2 text-info">
+                            {product.title}
+                          </h2>
+                        </NavLink>
+                        <div className="text-center">
+                          <Button
+                            variant="info"
+                            className="text-white"
+                            onClick={() => {
+                              addItemCounter(itemId);
+                            }}
+                          >
+                            +
+                          </Button>
+                          {itemCounts[itemId]}
+                          <Button variant="info" className="text-white" onClick={() => {
+                              delItemCounter(itemId);
+                            }}>
+                            -
+                          </Button>
+                        </div>
                         <ul className="list-group list-group-flush">
-                          <li className="list-group-item">
-                            Price: ${product.price}
-                          </li>
-                          <li className="list-group-item">
-                            Discount: {product.discountPercentage}%
-                          </li>
-                          <li className="list-group-item">
-                            Brand: {product.brand}
-                          </li>
-                          <Button variant="info" className=" checkout-button ">
+                          <li className="list-group-item">Price: ${product.price}</li>
+                          <li className="list-group-item">Brand: {product.brand}</li>
+                          <Button variant="info" className="checkout-button">
                             <NavLink
                               to={`/CheckoutPage/${product.id}`}
                               className="text-decoration-none text-white"

@@ -63,7 +63,7 @@ function Signup() {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100 mt-3" onClick={addDataButton}>
+            <Button variant="info" type="submit" className="w-100 mt-3" onClick={addDataButton}>
               Sign Up
             </Button>
 

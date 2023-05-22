@@ -31,7 +31,7 @@ function Login() {
             <Button variant="info" type="submit" className="w-100 mt-3" onClick={submitbutton} >
               Log In
             </Button>
-            <p className="mt-4"><h3>For our New Customers  <span><NavLink to="/signup">SignUp</NavLink></span></h3> </p>
+            <p className="mt-4"><h3>Do not have account   <span><NavLink to="/signup">SignUp</NavLink></span></h3> </p>
           </Form>
         </Col>
       </Row>

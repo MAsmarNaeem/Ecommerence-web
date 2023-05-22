@@ -3,11 +3,42 @@ import Navbar from "../components/navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import products from "../Products/Products.json";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CheckoutPage = () => {
   const { paramitemid } = useParams();
+  const [itemCounts, setItemCounts] = useState({});
   const navigate = useNavigate();
+  let getUser = localStorage.getItem("idkey");
+  console.log("get user is :", getUser);
+  const userdata = JSON.parse(getUser);
+  console.log("user data is :", userdata);
+
+  useEffect(() => {
+    const countItems = () => {
+      const counts = {};
+      for (let i = 0; i < userdata.length; i++) {
+        const itemId = userdata[i];
+        counts[itemId] = counts[itemId] ? counts[itemId] + 1 : 1;
+      }
+      setItemCounts(counts);
+    };
+
+    countItems();
+  }, []);
+
+  const getTotalPrice = () => {
+    let totalPrice = 0;
+    for (const itemId in itemCounts) {
+      const item = products.find((product) => product.id == itemId);
+      if (item) {
+        const itemPrice = item.price * itemCounts[itemId];
+        console.log("itemsprice:",itemPrice);
+        totalPrice += itemPrice;
+      }
+    }
+    return totalPrice;
+  };
 
   const [data, setdata] = useState({
     firstname: "",
@@ -162,6 +193,22 @@ const CheckoutPage = () => {
                 );
               }
             })}
+            <div>
+              {/* ... */}
+              {/* <div className="col-md-3">
+                <div className="card">
+                  {products.map((product) => {
+                    if (product.id == paramitemid) {
+                      return <div key={product.id}></div>;
+                    }
+                  })}
+                </div>
+                <div>
+                  <p>Total Price: ${getTotalPrice()}</p>
+                </div>
+              </div> */}
+                 <p>Total Price: ${getTotalPrice()}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -170,3 +217,5 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
+// ...

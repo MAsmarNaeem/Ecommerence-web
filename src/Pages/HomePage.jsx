@@ -12,6 +12,9 @@ import { useState } from "react";
 // import Sidebar from "../components/Sidebar";
 import Carousel from "react-bootstrap/Carousel";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+
 
 // import { Link } from "react-router-dom";
 
@@ -24,15 +27,19 @@ function HomePage() {
       setaddcart(JSON.parse(storedCart));
     }
   }, []);
+  const navigate = useNavigate();
+
 
   const addCartItem = (id) => {
-    alert("Item added Successfully");
+   
     setaddcart((prevCart) => {
       const updatedCart = [...prevCart, id];
       localStorage.setItem("idkey", JSON.stringify(updatedCart));
       return updatedCart;
     });
+   
   };
+  
   // const addCartItem = (productId) => {
   //   if (!addcart.includes(productId)) {
   //     setaddcart((prevCart) => {

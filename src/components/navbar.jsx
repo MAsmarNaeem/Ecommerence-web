@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 
 const navbar = (props) => {
   return (
-    <div className="bg-info container-fluid ">
+    <div className="bg-info container-fluid " style={{position:'sticky'}}>
       <Navbar expand="lg" className="">
         <Container>
           <Navbar.Brand href="/">
@@ -50,7 +50,7 @@ const navbar = (props) => {
               </Nav.Link>
               <Nav.Link>
                 <h3>
-                <Link className="text-decoration-none text-white " to="/signup" style={{marginRight:"290px"}}>
+                <Link className="text-decoration-none text-white " to="/signup" style={{marginRight:"490px"}}>
                   Signup
                 </Link>
                 </h3>

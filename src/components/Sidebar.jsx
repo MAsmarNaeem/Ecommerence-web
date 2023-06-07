@@ -4,11 +4,14 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import products from "../Products/Products.json";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
+import { useDispatch } from "react-redux";
+import { addvalue } from "../Store/Todoslice";
 
 function Sidebar(props) {
   const [show, setShow] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [itemCounts, setItemCounts] = useState({});
+  const dispatch=useDispatch()
 
   useEffect(() => {
     const storedCart = localStorage.getItem("idkey");
@@ -16,6 +19,11 @@ function Sidebar(props) {
       setCartItems(JSON.parse(storedCart));
     }
   }, []);
+  const addval=()=>
+  {
+    dispatch(addvalue(show))
+    
+  }
 
   useEffect(() => {
     const countItems = () => {
@@ -50,9 +58,11 @@ function Sidebar(props) {
 
   return (
     <>
-      <h6 className="mt-1 sidebar-title text-white" onClick={handleShow}>
+    
+    <>
+      <h2  className="mt-1 sidebar-title text-white" onClick={handleShow}>
         Cart
-      </h6>
+      </h2>
 
       <Offcanvas placement="end" show={show} onHide={handleClose} backdrop={false}>
         <Offcanvas.Header closeButton>
@@ -97,8 +107,9 @@ function Sidebar(props) {
                             -
                           </Button>
                         </div>
+                       
                         <ul className="list-group list-group-flush">
-                          <li className="list-group-item">Price: ${product.price}</li>
+                          <li className="list-group-item">Price: ${product.price *itemCounts[itemId]  }</li>
                           <li className="list-group-item">Brand: {product.brand}</li>
                           <Button variant="info" className="checkout-button">
                             <NavLink
@@ -122,6 +133,7 @@ function Sidebar(props) {
           )}
         </Offcanvas.Body>
       </Offcanvas>
+    </>
     </>
   );
 }

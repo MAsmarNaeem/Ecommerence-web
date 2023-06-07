@@ -5,13 +5,16 @@ import { NavLink } from "react-router-dom";
 import Login from "./Login";
 import Navbar from "../components/navbar";
 
+import "../App.css"
+
 function Signup() {
   const { getUserData, signupInputs,addDataButton } = UseSignup();
+
   return (
-   <div>
+   <div >
     <Navbar/>
      <Container>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center" >
         <Col md={6} className="mt-4">
           <h2 className="text-center mb-4">Create an Account</h2>
           <Form>

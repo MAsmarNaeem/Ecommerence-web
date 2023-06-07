@@ -5,12 +5,14 @@ import Sidebar from './Sidebar';
 
 const navbar = (props) => {
   return (
-    <div className="bg-info container-fluid " style={{position:'sticky'}}>
-      <Navbar expand="lg" className="">
+    <div className="bg-info  row  justify-content-center" >
+      <div className="col-md-3"></div>
+     <div className="col-md-3">
+     <Navbar expand="lg" className="">
         <Container>
           <Navbar.Brand href="/">
             <h3>
-            <Link to="/" className="text-decoration-none text-white " style={{marginLeft:"190px"}}>
+            <Link to="/" className="text-decoration-none text-white " >
               My Shopping App
             </Link>
             </h3>
@@ -34,7 +36,7 @@ const navbar = (props) => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link style={{ marginTop: '-3px' }}>
+              <Nav.Link >
                 
                 <Link className="text-decoration-none  text-white " >
                   <Sidebar myids={props.ids} />
@@ -59,6 +61,8 @@ const navbar = (props) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+     </div>
+     <div className="col-md-6"></div>
     </div>
   );
 };

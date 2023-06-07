@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import products from "../Products/Products.json";
 import { useParams } from "react-router-dom";
 import Footer from "../components/footer";
+import "../App.css"
 
 const Productdetail = () => {
   const { paramid } = useParams();

@@ -8,6 +8,7 @@ import ProductList from "./Pages/ProductList";
 import Products from "./Pages/Products";
 import Productdetail from "./Pages/Productdetail";
 import CheckoutPage from "./Pages/CheckoutPage";
+import "./App.css"
 function App() {
   return (
     <>

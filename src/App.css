@@ -30,16 +30,11 @@ font-family: 'Merriweather', serif;
     font-family: 'Merriweather', serif;
 
  }
- .mybtn{
-    position: absolute;
-    bottom: 60px;
-    right: 70px;
-    padding: 10px;
-    background-color: aqua;
-    border-radius: 50%;
-  color: #fff;
     
- }
+body{
+  background-color: red !important;
+}
+
  
 
 /* .name img {

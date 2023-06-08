@@ -50,7 +50,7 @@ function HomePage() {
 
       <div className="row bg-dark text-white py-3">
         <div className="col text-center">
-          <h2>Welcome to our Shopping Store</h2>
+          <h4>Welcome to our Shopping Store</h4>
         </div>
       </div>
 
@@ -107,7 +107,7 @@ function HomePage() {
 
       <div className="row mt-3">
         <div className="col text-center">
-          <h3 className="text-white">Products</h3>
+          <h3 className="text-white text-bold">Products</h3>
         </div>
       </div>
       <div></div>

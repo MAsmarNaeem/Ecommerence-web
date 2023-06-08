@@ -8,7 +8,7 @@ const navbar = (props) => {
   return (
     <div className="bg-info  row  justify-content-center" >
       <div className="col-md-3"></div>
-     <div className="col-md-3">
+     <div className="col-md-5">
      <Navbar expand="lg" className="">
         <Container>
           <Navbar.Brand href="/">
@@ -66,7 +66,7 @@ const navbar = (props) => {
         </Container>
       </Navbar>
      </div>
-     <div className="col-md-6"></div>
+     <div className="col-md-4"></div>
     </div>
   );
 };

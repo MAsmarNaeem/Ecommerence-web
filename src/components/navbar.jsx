@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
 const navbar = (props) => {
+  
   return (
     <div className="bg-info  row  justify-content-center" >
       <div className="col-md-3"></div>
@@ -39,8 +40,11 @@ const navbar = (props) => {
               <Nav.Link >
                 
                 <Link className="text-decoration-none  text-white " >
+                
                   <Sidebar myids={props.ids} />
+                 
                 </Link>
+
               </Nav.Link>
 
               <Nav.Link>

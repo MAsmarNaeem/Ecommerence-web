@@ -16,12 +16,12 @@ function Signup() {
      <Container>
       <Row className="justify-content-center" >
         <Col md={6} className="mt-4">
-          <h2 className="text-center mb-4">Create an Account</h2>
+          <h2 className="text-center mb-4 text-white">Create an Account</h2>
           <Form>
             <Form.Group controlId="formBasicName">
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type="text"
+                type="text text-white"
                 placeholder="Enter your name"
                 name="name"
                 required
@@ -38,7 +38,7 @@ function Signup() {
                 required
                 onChange={ getUserData}
               />
-              <Form.Text className="text-muted">
+              <Form.Text className="text-white ">
                 We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
@@ -71,7 +71,7 @@ function Signup() {
             </Button>
 
           </Form>
-          <p className="mt-4">Already have a account  <span><NavLink to="/Login">Login</NavLink></span></p>
+          <p className="mt-4 text-white">Already have a account  <span><NavLink className="text-white" to="/Login">Login</NavLink></span></p>
          
         </Col>
       </Row>

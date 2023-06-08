@@ -13,10 +13,13 @@ import Carousel from "react-bootstrap/Carousel";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import { useDispatch } from "react-redux";
+import { addvalue } from "../Store/Todoslice";
 
 function HomePage() {
   const [addcart, setaddcart] = useState([]);
   const [stateshowcart, setstateshowcart] = useState(false);
+  const dispatch=useDispatch()
 
 
   React.useEffect(() => {
@@ -25,9 +28,6 @@ function HomePage() {
       setaddcart(JSON.parse(storedCart));
     }
   }, []);
-  const showcart = () => {
-    setstateshowcart(!stateshowcart);
-  };
 
   const navigate = useNavigate();
 
@@ -40,7 +40,8 @@ function HomePage() {
   };
   const opencart=()=>
   {
-    setaddcart(true)
+    
+    dispatch(addvalue(true))
   }
 
   return (
@@ -140,13 +141,13 @@ function HomePage() {
                 type="button"
                 onClick={() => {
                   addCartItem(myproducts.id);
-                  showcart();
+                  opencart();
                 }}
                 // style={{marginBottom:"10px"}}
               >
                 Add to Cart
               </button>
-              {opencart }
+             
             </div>
           </div>
         ))}

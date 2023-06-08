@@ -76,11 +76,11 @@ const CheckoutPage = () => {
       <Navbar />
       <div className="mt-4  row mx-3 justify-content-evenly">
         <div className="col-md-7">
-          <p>Contact information</p>
+          <p className="text-white">Contact information</p>
           <p className="mt-4">
             Already have a account{" "}
             <span>
-              <NavLink to="/Login">Login</NavLink>
+              <NavLink className="text-white" to="/Login">Login</NavLink>
             </span>
           </p>
           Shipping Address

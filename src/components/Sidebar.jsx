@@ -23,7 +23,7 @@ function Sidebar(props) {
     if (storedCart) {
       setCartItems(JSON.parse(storedCart));
     }
-  }, [cartItems]);
+  }, []);
   const addval = () => {
     if (store.myTodo.Todo.todos) {
       dispatch(addvalue(show));

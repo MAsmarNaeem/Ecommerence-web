@@ -19,7 +19,7 @@ function App() {
         <Route path="/ProductList" element={<ProductList />} />
         <Route path="/Products" element={<Products />} />
         <Route path="/Productdetail/:paramid" element={<Productdetail />} />
-        <Route path="/CheckoutPage/:paramitemid" element={<CheckoutPage />} />
+        <Route path="/CheckoutPage" element={<CheckoutPage />} />
 
 
         <Route path="/signup" element={<Signup />} />

@@ -1,19 +1,22 @@
+
 import React from "react";
 import Navbar from "../components/navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import products from "../Products/Products.json";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import { useSelector } from "react-redux";
+import Footer from "../components/footer";
 const CheckoutPage = () => {
-  const { paramitemid } = useParams();
+  const getMyUser = useSelector((store) => store.myTodo.Todo.data);
   const [itemCounts, setItemCounts] = useState({});
+  const [showData, setShowData] = useState([]);
   const navigate = useNavigate();
-  let getUser = localStorage.getItem("idkey");
-  console.log("get user is :", getUser);
-  const userdata = JSON.parse(getUser);
-  console.log("user data is :", userdata);
-
+  const userdata = getMyUser;
+  const filteredItems = [...new Set(Array.from(userdata))];
+  console.log("userdata",userdata);
+  console.log("filterd",filteredItems);
+  
   useEffect(() => {
     const countItems = () => {
       const counts = {};
@@ -25,7 +28,7 @@ const CheckoutPage = () => {
     };
 
     countItems();
-  }, []);
+  }, [userdata]);
 
   const getTotalPrice = () => {
     let totalPrice = 0;
@@ -33,7 +36,6 @@ const CheckoutPage = () => {
       const item = products.find((product) => product.id == itemId);
       if (item) {
         const itemPrice = item.price * itemCounts[itemId];
-        console.log("itemsprice:",itemPrice);
         totalPrice += itemPrice;
       }
     }
@@ -45,6 +47,7 @@ const CheckoutPage = () => {
     address: "",
     phone: "",
   });
+
   const setdatafields = (e) => {
     const { value, name } = e.target;
     setdata(() => {
@@ -64,9 +67,7 @@ const CheckoutPage = () => {
         alert("Please log in first");
         navigate("/Login");
       } else {
-        {
-          alert("Order placed successfully");
-        }
+        alert("Order placed successfully");
       }
     }
   };
@@ -75,12 +76,12 @@ const CheckoutPage = () => {
     <div>
       <Navbar />
       <div className="mt-4  row mx-3 justify-content-evenly">
-        <div className="col-md-7">
-          <p className="text-white">Contact information</p>
+        <div className="col-md-5">
+        <p className="text-white">Contact information</p>
           <p className="mt-4">
             Already have a account{" "}
             <span>
-              <NavLink className="text-white" to="/Login">Login</NavLink>
+              <NavLink className="" to="/Login">Login</NavLink>
             </span>
           </p>
           Shipping Address
@@ -161,61 +162,83 @@ const CheckoutPage = () => {
             <br />
             <br />
           </form>
+         
         </div>
 
-        <div className="col-md-3">
-          <div className="card">
-            {products.map((product) => {
-              if (product.id == paramitemid) {
-                return (
-                  <div key={product.id}>
-                    <img
-                      className="card-img-top"
-                      src={product.images[0]}
-                      alt={product.title}
-                    />
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item">
-                        Title: ${product.title}
-                      </li>
-                      <li className="list-group-item">
-                        Price: ${product.price}
-                      </li>
-                      <li className="list-group-item">
-                        Discount: {product.discountPercentage}%
-                      </li>
+        <div className="col-md-5">
+          <div className="card " style={{border:"none"}}>
+          {filteredItems.map((itemId) => {
+                  const product = products.find(
+                    (product) => product.id === itemId
+                  );
 
-                      <li className="list-group-item">
-                        Brand: {product.brand}
-                      </li>
-                    </ul>
-                  </div>
-                );
-              }
-            })}
+                  if (product) {
+                    return (
+                      <div className="row ps-3 pt-2 text-center ps-4 ">
+                        <div className="col-md-4 pt-1">
+                          <div key={product.id} className="product-item">
+                            <div className="  product-image">
+                              <img
+                                src={product.thumbnail}
+                                style={{ height: "110px" }}
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-md-8 pt-1">
+                          <div className="card-body justify-content-center   mx-3">
+                            <NavLink
+                              to={`/Productdetail/${product.id}`}
+                              className="text-decoration-none text-danger"
+                            >
+                              <h2 className="card-title text-center pt-2 text-info">
+                                {product.title}
+                              </h2>
+                            </NavLink>
+                            <div className="text-center">
+                              
+                              {itemCounts[itemId]}
+                             
+                            </div>
+
+                            <ul className="list-group list-group-flush">
+                              <li className="list-group-item">
+                                Price: ${product.price * itemCounts[itemId]}
+                              </li>
+                              <li className="list-group-item">
+                                Brand: {product.brand}
+                              </li>
+                              {/* <Button variant="info" className="checkout-button"> */}
+                              {/* <NavLink
+                                to={`/CheckoutPage/${product.id}`}
+                                className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
+                              >
+                                Go to Checkout
+                              </NavLink> */}
+                              {/* </Button> */}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
             <div>
-              {/* ... */}
-              {/* <div className="col-md-3">
-                <div className="card">
-                  {products.map((product) => {
-                    if (product.id == paramitemid) {
-                      return <div key={product.id}></div>;
-                    }
-                  })}
-                </div>
-                <div>
-                  <p>Total Price: ${getTotalPrice()}</p>
-                </div>
-              </div> */}
-                 <p>Total Price: ${getTotalPrice()}</p>
+              
+              <hr/>
+              <p>Total Price: ${getTotalPrice()}</p>
+              <br/>
             </div>
+           
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
 
 export default CheckoutPage;
-
-// ...

@@ -3,25 +3,23 @@ import { combineReducers } from "@reduxjs/toolkit";
 
 const Todo = createSlice({
   name: "Todo",
-  initialState: { todos: false },
+  // initialState: { todos: false, data: [] },
+  initialState:  {data: [] },
 
   reducers: {
-    addvalue: (state, action) => {
-      // console.log("action",action.payload);
-      // console.log("state",state.todos);
-      if (action.payload === false) {
-        return {
-          todos: false,
-        };
-      } else
-        return {
-          todos: true,
-        };
+
+    addToCart: (state, action) => {
+      console.log("state,",state);
+     
+      
+       state.data=[...state.data,action.payload]
+      console.log("value",state.data);
+    
     },
   },
 });
 
-export const { addvalue } = Todo.actions;
+export const {   addToCart } = Todo.actions;
 //export default Todo.reducer;
 export default combineReducers({
   Todo: Todo.reducer,

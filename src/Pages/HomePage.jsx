@@ -14,7 +14,8 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useDispatch } from "react-redux";
-import { addvalue } from "../Store/Todoslice";
+import { addvalue } from "../Store/CartSlice";
+import { addToCart } from "../Store/Todoslice";
 
 function HomePage() {
   const [addcart, setaddcart] = useState([]);
@@ -22,21 +23,25 @@ function HomePage() {
   const dispatch=useDispatch()
 
 
-  React.useEffect(() => {
-    const storedCart = localStorage.getItem("idkey");
-    if (storedCart) {
-      setaddcart(JSON.parse(storedCart));
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   const storedCart = localStorage.getItem("idkey");
+  //   if (storedCart) {
+  //     setaddcart(JSON.parse(storedCart));
+  //   }
+  // }, []);
 
   const navigate = useNavigate();
 
   const addCartItem = (id) => {
-    setaddcart((prevCart) => {
-      const updatedCart = [...prevCart, id];
-      localStorage.setItem("idkey", JSON.stringify(updatedCart));
-      return updatedCart;
-    });
+    // setaddcart((prevCart) => {
+    //   const updatedCart = [...prevCart, id];
+    
+    //   localStorage.setItem("idkey", JSON.stringify(updatedCart));
+    //   return updatedCart;
+    // });
+    dispatch(addToCart(id))
+  
+    
   };
   const opencart=()=>
   {
@@ -48,7 +53,7 @@ function HomePage() {
     <div className="container-fluid">
       <Navbar color="bg-info" />
 
-      <div className="row bg-dark text-white py-3">
+      <div className="row  text-info py-3">
         <div className="col text-center">
           <h4>Welcome to our Shopping Store</h4>
         </div>
@@ -131,13 +136,14 @@ function HomePage() {
                   to={`/Productdetail/${myproducts.id}`}
                   className="text-decoration-none text-danger"
                 >
-                  <h5 className="card-title text-danger">{myproducts.title}</h5>
+                  <h5 className="card-title text-info">{myproducts.title}</h5>
                 </NavLink>
                 <p className="card-text">{myproducts.description}</p>
                 <p className="card-text">Price: {myproducts.price}</p>
               </div>
               <button
-                className="btn btn-info text-white "
+                className="btn btn-info text-white mb-3 p-2 px-2 "
+                style={{marginLeft:"90px",marginRight:"90px"}}
                 type="button"
                 onClick={() => {
                   addCartItem(myproducts.id);

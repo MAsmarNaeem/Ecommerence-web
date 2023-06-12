@@ -5,27 +5,27 @@ import products from "../Products/Products.json";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addvalue } from "../Store/Todoslice";
+import { addvalue } from "../Store/CartSlice";
 
 function Sidebar(props) {
   const store = useSelector((store) => store);
-
-  const [show, setShow] = useState(store.myTodo.Todo.todos);
+  const getStore = useSelector((store) => store);
+  //console.log("get store :", getStore.myTodo.Todo.data);
+  const [show, setShow] = useState(store.addvalue.Todo.todos);
   const [cartItems, setCartItems] = useState([]);
   const [itemCounts, setItemCounts] = useState({});
   const dispatch = useDispatch();
-  const demo = () => {
-    console.log("store is :", store.myTodo.Todo.todos);
-  };
+  const demo = () => {};
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("idkey");
+    const storedCart = getStore.myTodo.Todo.data;
     if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
+      setCartItems(storedCart);
     }
-  }, []);
+  }, [getStore.myTodo.Todo.data]);
+
   const addval = () => {
-    if (store.myTodo.Todo.todos) {
+    if (store.addvalue.Todo.todos) {
       dispatch(addvalue(show));
     } else {
       dispatch(addvalue(!show));
@@ -64,18 +64,37 @@ function Sidebar(props) {
   };
   const handleShow = () => dispatch(addvalue(true));
 
-  const filteredItems = [...new Set(cartItems)];
+  //const filteredItems = [...new Set(cartItems)];
+  const filteredItems = [...new Set(Array.from(cartItems))];
+
+  const getTotalPrice = () => {
+    let totalPrice = 0;
+
+    filteredItems.forEach((itemId) => {
+      const product = products.find((product) => product.id === itemId);
+
+      if (product) {
+        totalPrice += product.price * itemCounts[itemId];
+      }
+    });
+
+    return totalPrice.toFixed(2);
+  };
 
   return (
     <>
       <>
-        <p className=" sidebar-title text-white" style={{fontSize:"25px"}} onClick={handleShow}>
+        <span
+          className="ms-5 sidebar-title text-white"
+          style={{ fontSize: "25px" }}
+          onClick={handleShow}
+        >
           Cart
-        </p>
+        </span>
 
         <Offcanvas
           placement="end"
-          show={store.myTodo.Todo.todos}
+          show={store.addvalue.Todo.todos}
           onHide={handleClose}
           backdrop={false}
         >
@@ -92,59 +111,68 @@ function Sidebar(props) {
 
                   if (product) {
                     return (
-                      <div key={product.id} className="product-item">
-                        <div className="product-image">
-                          <img src={product.thumbnail} alt="" />
-                        </div>
-
-                        <div className="card-body justify-content center container">
-                          <NavLink
-                            to={`/Productdetail/${product.id}`}
-                            className="text-decoration-none text-danger"
-                          >
-                            <h2 className="card-title text-center pt-2 text-info">
-                              {product.title}
-                            </h2>
-                          </NavLink>
-                          <div className="text-center">
-                            <Button
-                              variant="info"
-                              className="text-white"
-                              onClick={() => {
-                                addItemCounter(itemId);
-                              }}
-                            >
-                              +
-                            </Button>
-                            {itemCounts[itemId]}
-                            <Button
-                              variant="info"
-                              className="text-white"
-                              onClick={() => {
-                                delItemCounter(itemId);
-                                demo();
-                              }}
-                            >
-                              -
-                            </Button>
+                      <div className="row ps-3 pt-2 text-center ps-4 ">
+                        <div className="col-md-4 pt-1">
+                          <div key={product.id} className="product-item">
+                            <div className="  product-image">
+                              <img
+                                src={product.thumbnail}
+                                style={{ height: "110px" }}
+                                alt=""
+                              />
+                            </div>
                           </div>
+                        </div>
+                        <div className="col-md-8 pt-1">
+                          <div className="card-body justify-content-center   mx-3">
+                            <NavLink
+                              to={`/Productdetail/${product.id}`}
+                              className="text-decoration-none text-danger"
+                            >
+                              <h2 className="card-title text-center pt-2 text-info">
+                                {product.title}
+                              </h2>
+                            </NavLink>
+                            <div className="text-center">
+                              <Button
+                                variant="info"
+                                className="text-white px-2 py-1"
+                                onClick={() => {
+                                  addItemCounter(itemId);
+                                }}
+                              >
+                                +
+                              </Button>
+                              {itemCounts[itemId]}
+                              <Button
+                                variant="info"
+                                className="text-white px-2 py-1"
+                                onClick={() => {
+                                  delItemCounter(itemId);
+                                  demo();
+                                }}
+                              >
+                                -
+                              </Button>
+                            </div>
 
-                          <ul className="list-group list-group-flush">
-                            <li className="list-group-item">
-                              Price: ${product.price * itemCounts[itemId]}
-                            </li>
-                            <li className="list-group-item">
-                              Brand: {product.brand}
-                            </li>
-                            <Button variant="info" className="checkout-button">
-                              <NavLink
+                            <ul className="list-group list-group-flush">
+                              <li className="list-group-item">
+                                Price: ${product.price * itemCounts[itemId]}
+                              </li>
+                              <li className="list-group-item">
+                                Brand: {product.brand}
+                              </li>
+                              {/* <Button variant="info" className="checkout-button"> */}
+                              {/* <NavLink
                                 to={`/CheckoutPage/${product.id}`}
-                                className="text-decoration-none text-white"
+                                className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
                               >
                                 Go to Checkout
-                              </NavLink>
-                            </Button>
-                          </ul>
+                              </NavLink> */}
+                              {/* </Button> */}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     );
@@ -156,6 +184,12 @@ function Sidebar(props) {
             ) : (
               <p>No items in the cart</p>
             )}
+            <div className="pt-4 ps-2 px-2 py-2">
+              <h3 className="bg-info">Total :${getTotalPrice()}</h3>
+              <NavLink      to={`/CheckoutPage`}  className="text-decoration-none text-white px-3 text-center py-1 btn btn-info">
+                Go to Checkout
+              </NavLink>
+            </div>
           </Offcanvas.Body>
         </Offcanvas>
       </>

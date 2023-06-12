@@ -17,7 +17,7 @@ function Login() {
       <Row className=" justify-content-center">
        
         <Col md={6} className="mt-4">
-          <h2 className="text-center mb-4 text-white">Log In</h2>
+          <h2 className="text-center mb-4">Log In</h2>
           <Form>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -32,7 +32,7 @@ function Login() {
             <Button variant="info" type="submit" className="w-100 mt-3" onClick={submitbutton} >
               Log In
             </Button>
-            <p className="mt-4 text-white"><h3>Do not have account   <span><NavLink className="text-white" to="/signup">SignUp</NavLink></span></h3> </p>
+            <p className="mt-4"><h3>Do not have account   <span><NavLink to="/signup">SignUp</NavLink></span></h3> </p>
           </Form>
         </Col>
       </Row>

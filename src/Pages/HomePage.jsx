@@ -89,7 +89,7 @@ function HomePage() {
                   style={{
                     marginLeft: "120px",
                     marginRight: "120px",
-                    fontSize: "12px",
+                    fontSize: "17px",
                     marginBottom: "30px",
                   }}
                   type="button"

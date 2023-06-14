@@ -21,6 +21,7 @@ const Todo = createSlice({
        // console.log("slice is ,", state.data.splice(index, 1));
       }
       localStorage.setItem("itemadd",JSON.stringify(state.data))
+      //
       //localStorage.setItem("itemadd",JSON.stringify(state.removeToCart))
     },
   },

@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
+import { addToCart } from "../Store/Todoslice";
 
 function Sidebar(props) {
   const store = useSelector((store) => store);
@@ -44,12 +45,14 @@ function Sidebar(props) {
 
     countItems();
   }, [cartItems]);
+  console.log("count items:", itemCounts[3]);
 
   const addItemCounter = (itemId) => {
     setItemCounts((prevCounts) => ({
       ...prevCounts,
       [itemId]: (prevCounts[itemId] || 0) + 1,
     }));
+    dispatch(addToCart(itemId));
   };
   const delItemCounter = (itemId) => {
     setItemCounts((prevCounts) => ({
@@ -180,16 +183,30 @@ function Sidebar(props) {
                     return null;
                   }
                 })}
+                <div className="pt-4 ps-2 px-2 py-2">
+                  <h3 className="bg-info">Total :${getTotalPrice()}</h3>
+                  <NavLink
+                    to={`/CheckoutPage`}
+                    className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
+                  >
+                    Go to Checkout
+                  </NavLink>
+                </div>
               </div>
             ) : (
-              <p>No items in the cart</p>
+              <div>
+                <p>No items in the cart</p>
+                <div className="pt-4 ps-2 px-2 py-2">
+                  {/* <h3 className="bg-info">Total :${getTotalPrice()}</h3> */}
+                  <NavLink
+                    to={`/Products`}
+                    className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
+                  >
+                    Go to Collections
+                  </NavLink>
+                </div>
+              </div>
             )}
-            <div className="pt-4 ps-2 px-2 py-2">
-              <h3 className="bg-info">Total :${getTotalPrice()}</h3>
-              <NavLink      to={`/CheckoutPage`}  className="text-decoration-none text-white px-3 text-center py-1 btn btn-info">
-                Go to Checkout
-              </NavLink>
-            </div>
           </Offcanvas.Body>
         </Offcanvas>
       </>

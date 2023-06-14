@@ -27,20 +27,25 @@ function Sidebar(props) {
     }
   }, [getStore.myTodo.Todo.data]);
 
-  const addval = () => {
-    if (store.addvalue.Todo.todos) {
-      dispatch(addvalue(show));
-    } else {
-      dispatch(addvalue(!show));
-    }
-  };
+  // const addval = () => {
+  //   if (store.addvalue.Todo.todos) {
+  //     dispatch(addvalue(show));
+  //   } else {
+  //     dispatch(addvalue(!show));
+  //   }
+  // };
+//console.log("count items",itemCounts);
 
   useEffect(() => {
     const countItems = () => {
       const counts = {};
       for (let i = 0; i < cartItems.length; i++) {
+        console.log("cart items",cartItems[i]);
+      
         const itemId = cartItems[i];
+       // console.log( "counts",counts[itemId]);
         counts[itemId] = counts[itemId] ? counts[itemId] + 1 : 1;
+        console.log("my items",counts[itemId]);
       }
       setItemCounts(counts);
     };
@@ -186,7 +191,7 @@ function Sidebar(props) {
                     return null;
                   }
                 })}
-                <div className="pt-4 ps-2 px-2 py-2">
+                <div className="pt-4 ps-2 px-5 py-2" style={{width:"450px",borderRadius:"4px"}}>
                   <h3 className="bg-info">Total :${getTotalPrice()}</h3>
                   <NavLink
                     to={`/CheckoutPage`}

@@ -20,144 +20,93 @@ import { addToCart } from "../Store/Todoslice";
 function HomePage() {
   const [addcart, setaddcart] = useState([]);
   const [stateshowcart, setstateshowcart] = useState(false);
-  const dispatch=useDispatch()
-
-
-  // React.useEffect(() => {
-  //   const storedCart = localStorage.getItem("idkey");
-  //   if (storedCart) {
-  //     setaddcart(JSON.parse(storedCart));
-  //   }
-  // }, []);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const addCartItem = (id) => {
-    // setaddcart((prevCart) => {
-    //   const updatedCart = [...prevCart, id];
-    
-    //   localStorage.setItem("idkey", JSON.stringify(updatedCart));
-    //   return updatedCart;
-    // });
-    dispatch(addToCart(id))
-  
-    
+    dispatch(addToCart(id));
   };
-  const opencart=()=>
-  {
-    
-    dispatch(addvalue(true))
-  }
+
+  const opencart = () => {
+    dispatch(addvalue(true));
+  };
 
   return (
     <div className="container-fluid">
       <Navbar color="bg-info" />
 
-      <div className="row  text-info py-3">
-        <div className="col text-center">
-          <h4>Welcome to our Shopping Store</h4>
-        </div>
-      </div>
+      <div className="row  text-info py-3"></div>
 
       <div className="row mt-2">
         <div className="col">
           <Carousel>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src={pic1}
-                alt="First slide"
-                height={400}
-              />
-              <Carousel.Caption>
-                <h3>Welcome to our Store</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src={pic2}
-                alt="Second slide"
-                height={400}
-              />
-
-              <Carousel.Caption>
-                <h3 className="text-info">Best Services Available</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src={pic3}
-                alt="Third slide"
-                height={400}
-              />
-
-              <Carousel.Caption>
-                <h3>Quality Products</h3>
-                <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item>
+            {/* Carousel items */}
           </Carousel>
         </div>
       </div>
-      
 
       <div className="row mt-3">
         <div className="col text-center">
           <h3 className="text-white text-bold">Products</h3>
         </div>
       </div>
-      <div></div>
 
       <div className="row">
-      
         {products.map((myproducts) => (
           <div className="col-md-3" key={myproducts.id}>
-            <div
-              className="card mt-4 "
-              style={{ height: "500px", border: "none" }}
-            >
+            {/* Product card */}
+            <div className="card mt-4 shadow" style={{ height: "500px", border: "none" }}>
+              {/* Card content */}
               <img
                 src={myproducts.thumbnail}
                 alt={myproducts.title}
-                className="card-img-top"
+                className="card-img-top shadow"
                 height="250px"
               />
-              <div className="card-body text-center mt-3">
-                <NavLink
-                  to={`/Productdetail/${myproducts.id}`}
-                  className="text-decoration-none text-danger"
-                >
-                  <h5 className="card-title text-info">{myproducts.title}</h5>
-                </NavLink>
-                <p className="card-text">{myproducts.description}</p>
-                <p className="card-text">Price: {myproducts.price}</p>
-              </div>
-              <button
-                className="btn btn-info text-white mb-3 p-2 px-2 "
-                style={{marginLeft:"90px",marginRight:"90px"}}
-                type="button"
-                onClick={() => {
-                  addCartItem(myproducts.id);
-                  opencart();
+
+              <div
+                className="shadow rounded"
+                style={{
+                  height: "300px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
                 }}
-                // style={{marginBottom:"10px"}}
               >
-                Add to Cart
-              </button>
-             
+                <div className="card-body text-center mt-3">
+                  <NavLink
+                    to={`/Productdetail/${myproducts.id}`}
+                    className="text-decoration-none text-danger"
+                  >
+                    <h5 className="card-title text-info">{myproducts.title}</h5>
+                  </NavLink>
+                  <p className="card-text">{myproducts.description}</p>
+                  <p className="card-text">Price: {myproducts.price}</p>
+                </div>
+                <button
+                  className="btn btn-info text-white pb-2 px-4 py-2"
+                  style={{
+                    marginLeft: "120px",
+                    marginRight: "120px",
+                    fontSize: "12px",
+                    marginBottom: "30px",
+                  }}
+                  type="button"
+                  onClick={() => {
+                    addCartItem(myproducts.id);
+                    opencart();
+                  }}
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+      <Sidebar />
 
       <Footer />
     </div>

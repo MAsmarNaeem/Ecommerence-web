@@ -7,6 +7,8 @@ import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
 import { addToCart } from "../Store/Todoslice";
+import { removeToCart } from "../Store/Todoslice";
+
 
 function Sidebar(props) {
   const store = useSelector((store) => store);
@@ -45,7 +47,7 @@ function Sidebar(props) {
 
     countItems();
   }, [cartItems]);
-  console.log("count items:", itemCounts[3]);
+ // console.log("count items:", itemCounts[3]);
 
   const addItemCounter = (itemId) => {
     setItemCounts((prevCounts) => ({
@@ -59,6 +61,7 @@ function Sidebar(props) {
       ...prevCounts,
       [itemId]: (prevCounts[itemId] || 0) - 1,
     }));
+    dispatch(removeToCart(itemId));
   };
 
   const handleClose = () => {

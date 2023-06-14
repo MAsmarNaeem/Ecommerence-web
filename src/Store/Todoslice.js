@@ -1,26 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { combineReducers } from "@reduxjs/toolkit";
+import { createSlice, combineReducers } from "@reduxjs/toolkit";
 
 const Todo = createSlice({
   name: "Todo",
-  // initialState: { todos: false, data: [] },
-  initialState:  {data: [] },
-
+  initialState: { data: [] },
   reducers: {
-
     addToCart: (state, action) => {
-      console.log("state,",state);
-     
-      
-       state.data=[...state.data,action.payload]
-      console.log("value",state.data);
-    
+      state.data = [...state.data, action.payload];
+    },
+    removeToCart: (state, action) => {
+      const index = state.data.findIndex((item) => item === action.payload);
+      console.log("index is ",index);
+      if (index !== -1) {
+        state.data.splice(index, 1);
+      }
     },
   },
 });
 
-export const {   addToCart } = Todo.actions;
-//export default Todo.reducer;
+export const { addToCart, removeToCart } = Todo.actions;
+
 export default combineReducers({
   Todo: Todo.reducer,
 });

@@ -1,7 +1,7 @@
 
 import React from "react";
 import Navbar from "../components/navbar";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import products from "../Products/Products.json";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";

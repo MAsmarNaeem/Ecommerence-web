@@ -36,7 +36,7 @@ const Productdetail = () => {
         <div className="col-md-5">
           <div className="card">
             {products.map((product) => {
-              if (product.id == paramid) {
+              if (product.id === paramid) {
                 return (
                   <div key={product.id}>
                     <img
@@ -53,7 +53,7 @@ const Productdetail = () => {
         <div className="col-md-5">
           <div className="card">
             {products.map((product) => {
-              if (product.id == paramid) {
+              if (product.id === paramid) {
                 return (
                   <div key={product.id}>
                     <div className="card-body">

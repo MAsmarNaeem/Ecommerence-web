@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
-import { addToCart } from "../Store/Todoslice";
+import { addToCart } from "../Store/AddCartSlice";
 import Navbar from "../components/navbar";
 import products from "../Products/Products.json";
 import Footer from "../components/footer";

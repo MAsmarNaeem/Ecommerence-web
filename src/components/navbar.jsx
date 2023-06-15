@@ -39,15 +39,7 @@ const navbar = (props) => {
                 </Nav.Link>
               </Nav>
               <Nav>
-                {/* <Nav.Link >
-                
-                <Link className="text-decoration-none  text-white text-end" >
-                 */}
-                {/* <Sidebar myids={props.ids} /> */}
-
-                {/* </Link>
-
-              </Nav.Link> */}
+             
 
                 <Nav.Link>
                   <h3>

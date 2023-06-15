@@ -17,12 +17,10 @@ const Todo = createSlice({
       console.log("index is ",index);
       if (index !== -1) {
         state.data.splice(index, 1);
-       // console.log("index",index);
-       // console.log("slice is ,", state.data.splice(index, 1));
+    
       }
       localStorage.setItem("itemadd",JSON.stringify(state.data))
-      //
-      //localStorage.setItem("itemadd",JSON.stringify(state.removeToCart))
+     
     },
   },
   

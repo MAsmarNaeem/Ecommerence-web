@@ -6,8 +6,8 @@ import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addvalue } from "../Store/CartSlice";
-import { addToCart } from "../Store/Todoslice";
-import { removeToCart } from "../Store/Todoslice";
+import { addToCart } from "../Store/AddCartSlice";
+import { removeToCart } from "../Store/AddCartSlice";
 
 
 function Sidebar(props) {
@@ -174,14 +174,7 @@ function Sidebar(props) {
                               <li className="list-group-item">
                                 Brand: {product.brand}
                               </li>
-                              {/* <Button variant="info" className="checkout-button"> */}
-                              {/* <NavLink
-                                to={`/CheckoutPage/${product.id}`}
-                                className="text-decoration-none text-white px-3 text-center py-1 btn btn-info"
-                              >
-                                Go to Checkout
-                              </NavLink> */}
-                              {/* </Button> */}
+                             
                             </ul>
                           </div>
                         </div>

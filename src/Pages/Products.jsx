@@ -44,8 +44,14 @@ const Products = () => {
                 <p className="card-text">Price: {myproducts.price}</p>
               </div>
               <NavLink
-                style={{ marginLeft: "120px", marginRight: "120px",fontSize:"17px" }}
-                className="text-decoration-none text-white btn bg-info mb-3 p-2 px-2"
+               className="btn btn-info text-white pb-2 px-4 py-2"
+               style={{
+                 marginLeft: "30%",
+                 marginRight: "5%",
+                 marginBottom: "30px",
+                 width: "40%",
+                 maxWidth: "300px"
+               }}
                 onClick={() => {
                   openCartAndAddItem(myproducts.id);
                 }}

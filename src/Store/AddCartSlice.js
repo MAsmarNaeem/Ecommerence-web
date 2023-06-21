@@ -1,5 +1,5 @@
 import { createSlice, combineReducers } from "@reduxjs/toolkit";
-const item=localStorage.getItem("itemadd")!==null?JSON.parse(localStorage.getItem("itemadd")):0
+const item=localStorage.getItem("itemadd")!==null?JSON.parse(localStorage.getItem("itemadd")):[]
 console.log("my ddddddddd",item);
 
 const Todo = createSlice({
